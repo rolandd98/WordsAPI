@@ -10,7 +10,7 @@ public class WordsUtils {
             rev = rev + str.charAt(i);
         }
  
-        if (str.equals(rev)) {
+        if (str.toLowerCase().equals(rev.toLowerCase())) {
         	isPalindr = true;
         }
         return isPalindr;

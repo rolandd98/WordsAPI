@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import jakarta.annotation.PostConstruct;
-
 @Repository
 public class WordsRepository {
 
@@ -15,7 +13,6 @@ public class WordsRepository {
 
 	public WordsRepository() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void save(Word word) {
@@ -43,11 +40,4 @@ public class WordsRepository {
 	public List<Word> findPalindromes() {
 		return wordList.stream().filter(w -> WordsUtils.isPalindrome(w.value())).toList();	
 	}
-	
-	@PostConstruct
-	private void init() {
-		Word word = new Word(1, "ABBA");
-		wordList.add(word);
-	}
-
 }
