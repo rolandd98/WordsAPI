@@ -25,21 +25,18 @@ public class WordsController {
 		this.repository = repository;
 	}
 	
-	//ADD WORD
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
 	public void create(@RequestBody Word word) {
 		repository.save(word);
 	}
 	
-	//DELETE WORD
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		repository.delete(id);
 	}
 	
-	//UPDATE WORD
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@PutMapping("/{id}")
 	public void update(@RequestBody Word word, @PathVariable Integer id) {
@@ -49,19 +46,16 @@ public class WordsController {
 		repository.save(word);
 	}
 	
-	//FIND ONE WORD
 	@GetMapping("/{id}")
 	public Word findByID(@PathVariable Integer id) {
 		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found"));
 	}
 	
-	//FIND ALL WORDS
 	@GetMapping("")
 	public List<Word> findAll() {
 		return repository.findAll();
 	}
 	
-	//FIND PALINDROMES
 	@GetMapping("/palindromes")
 	public List<Word> findPalindromes() {
 		return repository.findPalindromes();
